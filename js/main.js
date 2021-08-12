@@ -18,3 +18,14 @@ const outgoingEvents = ["dragleave", "drop"];
 outgoingEvents.forEach((eventName) =>
   dropzone.addEventListener(eventName, inactive)
 );
+
+const droppedFileList = [];
+
+const handleDrop = (e) => {
+  const dt = e.dataTransfer;
+  const files = dt.files;
+  droppedFileList.push(files);
+  console.log(droppedFileList);
+};
+
+dropzone.addEventListener("drop", handleDrop);
