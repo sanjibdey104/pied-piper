@@ -1,0 +1,99 @@
+:root {
+  --primary-font: "Montserrat", sans-serif;
+  --secondary-font: "Playfair Display", serif;
+  --bg-light: #ffffffda;
+  --bg-dark: #121212;
+  --text-light: #ffffffda;
+  --text-dark: #000;
+  --accent-color: #01977a;
+}
+
+html {
+  font-family: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  font-family: var(--primary-font);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+img {
+  display: block;
+}
+
+a,
+button {
+  font-family: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+a {
+  color: var(--text-dark);
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  min-height: 100%;
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title h2 {
+  font-size: 1.75rem;
+}
+
+.drop-zone {
+  width: 20rem;
+  height: 10rem;
+  border-radius: 0.5rem;
+  border: 3px dashed rgb(139, 139, 139);
+  padding: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.drop-zone i {
+  font-size: 2.2rem;
+}
+
+.drop-zone #limit {
+  font-size: 0.75rem;
+}
+
+.active-border {
+  border: 3px dashed var(--accent-color);
+}
