@@ -17,20 +17,24 @@
       src="https://kit.fontawesome.com/991c226565.js"
       crossorigin="anonymous"
     ></script>
-    <script src="js/main.js" defer></script>
+    <script src="js/main.js" type="module"></script>
     <title>Pied Piper</title>
   </head>
   <body>
     <div class="container">
-      <div class="title">
+      <section class="title">
         <h2>Welcome to Pied Piper</h2>
         <p>your minimal image compressor</p>
-      </div>
-      <div class="drop-zone">
+      </section>
+      <section class="drop-zone">
         <i class="fas fa-images"></i>
         <p>Drop your .jpg or .png files here</p>
         <p id="limit">up to 20 images, max 5 MB each</p>
-      </div>
+      </section>
+
+      <section class="results none">
+        <ul class="result-list"></ul>
+      </section>
     </div>
   </body>
 </html>
