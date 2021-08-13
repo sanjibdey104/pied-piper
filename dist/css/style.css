@@ -54,7 +54,7 @@ ul {
 
 .container {
   min-height: 100%;
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
   padding: 1rem 0;
 
@@ -99,39 +99,133 @@ ul {
 
 .results {
   width: 100%;
+  max-width: 900px;
   padding: 0.5rem;
 }
 
 .result-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  width: 100%;
   background-color: #ffffffda;
-  padding-inline: 0.5rem;
+}
+
+.result-list p {
+  white-space: nowrap;
 }
 
 .result-list li {
-  width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 1rem;
+
+  padding: 0.5rem;
+  background-color: #e9ecef;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0.5rem;
 }
 
-li > * {
+.result-list div {
+  width: 33%;
   display: flex;
   justify-content: space-between;
-  flex-grow: 1;
-  flex-basis: 0;
-  gap: 1rem;
 }
 
-.file_download_wrapper {
-  text-decoration: underline;
+.file_name {
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .file_size_before,
 .file_size_after {
   color: var(--accent-color);
+  display: none;
+}
+
+.download_link_wrapper {
+  width: 100%;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.download_link_wrapper a {
+  width: 100%;
+  text-decoration: underline;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.compressed_percentage {
+  display: none;
+}
+
+.progress-bar {
+  -webkit-appearance: none;
+  width: 33%;
+  max-width: 15rem;
+  height: 30px;
+  position: relative;
+}
+
+::-moz-progress-bar {
+  background: linear-gradient(to right, #7fc271, #52b69a, var(--accent-color));
+}
+
+::-webkit-progress-inner-element {
+  background: #fff;
+  padding: 3px;
+  border-radius: 15px;
+  border: 1px solid rgb(207, 219, 222);
+}
+
+::-webkit-progress-bar {
+  background: #fff;
+  border-radius: 15px;
+  height: 22px;
+}
+
+::-webkit-progress-value {
+  background: linear-gradient(to right, #7fc271, #52b69a, var(--accent-color));
+  border-radius: 15px;
+}
+
+.finished::before {
+  content: "finished";
+  position: absolute;
+  inset: 0;
+  color: hsl(0, 0%, 95%);
+
+  display: grid;
+  place-content: center;
+}
+
+.error::before {
+  content: "finished";
+  position: absolute;
+  inset: 0;
+  color: hsl(0, 0%, 95%);
+
+  display: grid;
+  place-content: center;
+}
+
+.error::-webkit-progress-value {
+  background: linear-gradient(to right, #e85d04, hsl(12, 89%, 58%));
+}
+
+@media only screen and (min-width: 480px) {
+  .download_link_wrapper {
+    text-align: center;
+  }
+  .compressed_percentage {
+    display: inline-block;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .file_size_before,
+  .file_size_after {
+    display: block;
+  }
 }

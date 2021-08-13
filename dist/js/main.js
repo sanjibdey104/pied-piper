@@ -55,6 +55,7 @@ const createResult = (file, fileId) => {
 
   const progressBar = document.createElement("progress");
   progressBar.id = `progress-bar_${file.name}_${fileId}`;
+  progressBar.className = "progress-bar";
   progressBar.max = 10;
   progressBar.value = 0;
 
@@ -85,7 +86,6 @@ const createResult = (file, fileId) => {
 };
 
 const getFileSizeString = (fileSize) => {
-  console.log(fileSize, typeof fileSize);
   const sizeInKB = parseFloat(fileSize) / 1024;
   const sizeInMB = sizeInKB / 1024;
   return sizeInKB > 1024
@@ -110,7 +110,6 @@ const uploadFile = (file, fileId) => {
       });
 
       const imgJson = await fileStream.json();
-
       if (imgJson.error) return handleFileError(fileName, fileId);
       updateProgressBar(file, fileId, imgJson);
     } catch (err) {
@@ -122,11 +121,11 @@ const uploadFile = (file, fileId) => {
 };
 
 const handleFileError = (fileName, fileId) => {
-  const progressBar = document.querySelector(
-    `#progress_bar_${fileName}_${fileId}`
+  const progressBar = document.getElementById(
+    `progress_bar_${fileName}_${fileId}`
   );
   progressBar.value = 10;
-  // progressBar.classList.add("error");
+  progressBar.classList.add("error");
 };
 
 const updateProgressBar = (file, fileId, imgJson) => {
@@ -137,7 +136,7 @@ const updateProgressBar = (file, fileId, imgJson) => {
     progressBar.value += 1;
     if (progressBar.value === 10) {
       clearInterval(addProgress);
-      // progressBar.classList.add("finished");
+      progressBar.classList.add("finished");
       populateDivAfterCompression(file, fileId, imgJson);
     }
   }, 50);
