@@ -31,7 +31,7 @@ dropzone.addEventListener("drop", handleDrop);
 
 const handleFiles = (fileArray) => {
   fileArray.forEach((file) => {
-    const fileId = Math.round(Math.random() * 1000);
+    const fileId = Math.round(Math.random() * 10000);
     if (file.size > 4 * 1024 * 1024) return alert("file size exceeded");
     createResult(file, fileId);
     uploadFile(file, fileId);
@@ -190,7 +190,11 @@ const generateDownloadLink = (imgJson, fileId) => {
   link.href = `data:image/${extension};base64,${imgJson.base64CompString}`;
   link.download = imgJson.filename;
   link.textContent = "download";
-  compressedFilesArr.push({ filename: link.download, url: link.href });
+  compressedFilesArr.push({
+    id: fileId,
+    filename: link.download,
+    url: link.href,
+  });
   return link;
 };
 
@@ -203,7 +207,7 @@ const zipAndDownload = () => {
       if (err) {
         console.log(err);
       }
-      zip.file(file.filename, data, { binary: true });
+      zip.file(file.id + "_" + file.filename, data, { binary: true });
       count++;
       if (count === compressedFilesArr.length) {
         zip.generateAsync({ type: "blob" }).then(function (content) {
