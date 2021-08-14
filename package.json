@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/sanjibdey104/pied-piper#readme",
   "dependencies": {
+    "axios": "^0.21.1",
+    "file-saver": "^2.0.5",
     "imagemin": "^7.0.1",
     "imagemin-jpeg-recompress": "^7.0.0",
-    "imagemin-pngquant": "^9.0.2"
+    "imagemin-pngquant": "^9.0.2",
+    "jszip": "^3.7.1"
   }
 }

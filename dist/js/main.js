@@ -36,6 +36,14 @@ const handleFiles = (fileArray) => {
     createResult(file, fileId);
     uploadFile(file, fileId);
   });
+
+  if (fileArray.length > 1) {
+    const downloadAllLink = document.createElement("button");
+    downloadAllLink.className = "download-all-button";
+    downloadAllLink.textContent = "download all";
+    downloadAllLink.addEventListener("click", zipAndDownload);
+    document.querySelector(".results").appendChild(downloadAllLink);
+  }
 };
 
 const createResult = (file, fileId) => {
@@ -157,7 +165,7 @@ const populateDivAfterCompression = (file, fileId, imgJson) => {
   const downloadLinkWrapper = document.getElementById(
     `download_link_wrapper_${file.name}_${fileId}`
   );
-  const downloadLink = generateDownloadLink(imgJson);
+  const downloadLink = generateDownloadLink(imgJson, fileId);
   downloadLinkWrapper.appendChild(downloadLink);
 
   const percentageDisplay = document.getElementById(
@@ -173,11 +181,36 @@ const getCompressedPercentage = (originalSize, compressedSize) => {
   return percentSaved;
 };
 
-const generateDownloadLink = (imgJson) => {
+let downloadFileObj = {};
+
+const generateDownloadLink = (imgJson, fileId) => {
   const extension = imgJson.filename.split(".").pop();
   const link = document.createElement("a");
   link.href = `data:image/${extension};base64,${imgJson.base64CompString}`;
   link.download = imgJson.filename;
   link.textContent = "download";
+  downloadFileObj[fileId] = { filename: link.download, url: link.href };
   return link;
+};
+
+let zip = new JSZip();
+let count = 0;
+
+const zipAndDownload = () => {
+  const downloadFileArr = Object.values(downloadFileObj);
+
+  downloadFileArr.forEach(function (file) {
+    JSZipUtils.getBinaryContent(file.url, function (err, data) {
+      if (err) {
+        console.log(err);
+      }
+      zip.file(file.filename, data, { binary: true });
+      count++;
+      if (count === downloadFileArr.length) {
+        zip.generateAsync({ type: "blob" }).then(function (content) {
+          saveAs(content, new Date() + "zip");
+        });
+      }
+    });
+  });
 };

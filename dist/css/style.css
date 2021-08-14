@@ -101,6 +101,11 @@ ul {
   width: 100%;
   max-width: 900px;
   padding: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .result-list {
@@ -228,4 +233,13 @@ ul {
   .file_size_after {
     display: block;
   }
+}
+
+.download-all-button {
+  width: 7rem;
+  margin: 0 auto;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-weight: 500;
 }
