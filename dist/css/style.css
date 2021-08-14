@@ -135,7 +135,7 @@ a:hover i {
   width: 20rem;
   height: 10rem;
   border-radius: 0.5rem;
-  border: 3px dashed rgb(139, 139, 139);
+  border: 2px dashed rgb(180, 180, 180);
   padding: 0.5rem;
 
   display: flex;
@@ -169,7 +169,6 @@ a:hover i {
 
 .result-list {
   width: 100%;
-  background-color: #ffffffda;
 }
 
 .result-list p {
@@ -182,11 +181,12 @@ a:hover i {
   align-items: center;
   gap: 1rem;
 
-  padding: 0.5rem;
-  background-color: #e9ecef;
-  font-size: 0.85rem;
+  padding: 0.75rem;
+  box-shadow: 0 0 5px #000;
+  border-radius: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  margin: 0.5rem;
+  margin: 1rem;
 }
 
 .result-list div {
@@ -218,6 +218,13 @@ a:hover i {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  color: tomato;
+}
+
+.download_link_wrapper a:hover,
+.download_link_wrapper a:active,
+.download_link_wrapper a:visited {
+  color: var(--accent-color);
 }
 
 .compressed_percentage {
@@ -237,14 +244,14 @@ a:hover i {
 }
 
 ::-webkit-progress-inner-element {
-  background: #fff;
   padding: 3px;
   border-radius: 15px;
-  border: 1px solid rgb(207, 219, 222);
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 0 3px var(--accent-color);
 }
 
 ::-webkit-progress-bar {
-  background: #fff;
+  background: var(--bg-dark);
   border-radius: 15px;
   height: 22px;
 }
@@ -258,7 +265,7 @@ a:hover i {
   content: "finished";
   position: absolute;
   inset: 0;
-  color: hsl(0, 0%, 95%);
+  color: #000;
 
   display: grid;
   place-content: center;
@@ -268,7 +275,7 @@ a:hover i {
   content: "finished";
   position: absolute;
   inset: 0;
-  color: hsl(0, 0%, 95%);
+  color: #000;
 
   display: grid;
   place-content: center;
@@ -301,8 +308,17 @@ a:hover i {
 .download-all-button {
   width: 7rem;
   margin: 0 auto;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   border-radius: 0.5rem;
   padding: 0.5rem;
+
+  font-size: 0.9rem;
   font-weight: 500;
+  color: var(--text-light);
+  background-color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  transition: all 200ms ease-in-out;
+}
+
+.download-all-button:hover {
+  background-color: var(--bg-dark);
 }
