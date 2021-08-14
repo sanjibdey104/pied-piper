@@ -182,6 +182,7 @@ const getCompressedPercentage = (originalSize, compressedSize) => {
 };
 
 let downloadFileObj = {};
+let compressedFilesArr = [];
 
 const generateDownloadLink = (imgJson, fileId) => {
   const extension = imgJson.filename.split(".").pop();
@@ -189,7 +190,7 @@ const generateDownloadLink = (imgJson, fileId) => {
   link.href = `data:image/${extension};base64,${imgJson.base64CompString}`;
   link.download = imgJson.filename;
   link.textContent = "download";
-  downloadFileObj[fileId] = { filename: link.download, url: link.href };
+  compressedFilesArr.push({ filename: link.download, url: link.href });
   return link;
 };
 
@@ -197,16 +198,14 @@ let zip = new JSZip();
 let count = 0;
 
 const zipAndDownload = () => {
-  const downloadFileArr = Object.values(downloadFileObj);
-
-  downloadFileArr.forEach(function (file) {
+  compressedFilesArr.forEach(function (file) {
     JSZipUtils.getBinaryContent(file.url, function (err, data) {
       if (err) {
         console.log(err);
       }
       zip.file(file.filename, data, { binary: true });
       count++;
-      if (count === downloadFileArr.length) {
+      if (count === compressedFilesArr.length) {
         zip.generateAsync({ type: "blob" }).then(function (content) {
           saveAs(content, new Date() + "zip");
         });
