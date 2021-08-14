@@ -1,6 +1,5 @@
 :root {
-  --primary-font: "Montserrat", sans-serif;
-  --secondary-font: "Playfair Display", serif;
+  --primary-font: "Inconsolata", monospace;
   --bg-light: #ffffffda;
   --bg-dark: #121212;
   --text-light: #ffffffda;
@@ -25,8 +24,8 @@ body {
   height: 100vh;
   width: 100%;
   font-family: var(--primary-font);
-  background-color: var(--bg-light);
-  color: var(--text-dark);
+  background-color: var(--bg-dark);
+  color: var(--text-light);
 }
 
 img {
@@ -44,7 +43,6 @@ button {
 }
 
 a {
-  color: var(--text-dark);
   text-decoration: none;
 }
 
@@ -56,20 +54,81 @@ ul {
   min-height: 100%;
   width: 100%;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding-bottom: 0.5rem;
 
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 3rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-.title {
-  text-align: center;
+.logo img {
+  width: clamp(3rem, 5vw, 5rem);
 }
 
-.title h2 {
-  font-size: 1.75rem;
+#title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent-color);
+  transform: translateX(-0.5rem) translateY(-0.5rem);
+}
+
+#tag-line {
+  font-size: 0.85rem;
+}
+
+#dev-team-image {
+  width: clamp(8rem, 13vw, 15rem);
+  box-shadow: 0 0 5px #000;
+  border-radius: 0.5rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+footer section {
+  display: flex;
+  gap: 0.5rem;
+}
+
+footer a {
+  color: var(--accent-color);
+}
+
+.contact-list {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+li i {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  transition: all 200ms ease-in-out;
+}
+
+a:hover i {
+  color: var(--accent-color);
+  fill: rosybrown;
 }
 
 .drop-zone {
@@ -90,7 +149,7 @@ ul {
 }
 
 .drop-zone #limit {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
 }
 
 .active-border {
@@ -232,6 +291,10 @@ ul {
   .file_size_before,
   .file_size_after {
     display: block;
+  }
+
+  header {
+    width: 80%;
   }
 }
 

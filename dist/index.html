@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <script
@@ -26,19 +26,65 @@
   </head>
   <body>
     <div class="container">
-      <section class="title">
-        <h2>Welcome to Pied Piper</h2>
-        <p>your minimal image compressor</p>
-      </section>
+      <header>
+        <div class="logo">
+          <img src="./images/pied-piper-logo.png" alt="pied piper logo" />
+          <p id="title">Pied Piper</p>
+        </div>
+        <img
+          id="dev-team-image"
+          src="./images/pied-piper-dev-team.jpg"
+          alt="pied piper dev team"
+        />
+        <p id="tag-line">your minimal image compressor</p>
+      </header>
+
       <section class="drop-zone">
         <i class="fas fa-images"></i>
         <p>Drop your .jpg or .png files here</p>
-        <p id="limit">up to 20 images, max 5 MB each</p>
+        <p id="limit">up to 20 images, max 4 MB each</p>
       </section>
 
       <section class="results none">
         <ul class="result-list"></ul>
       </section>
+
+      <footer>
+        <ul class="contact-list">
+          <li>
+            <a
+              href="https://github.com/sanjibdey104/pied-piper"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://twitter.com/Sanjib_104"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a className="mail" href="mailto:sanjibdey.dey4@gmail.com">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        </ul>
+        <section>
+          <p>Inspired by <a href="https://tinyjpg.com/">tinyjpg</a></p>
+          ||
+          <p>
+            Tutorial by
+            <a href="https://www.youtube.com/watch?v=jEjo9UytpIc">Dave Gray</a>
+          </p>
+        </section>
+        <p>Built with 💗 for vanilla js</p>
+      </footer>
     </div>
   </body>
 </html>
