@@ -19,12 +19,27 @@ outgoingEvents.forEach((eventName) =>
   dropzone.addEventListener(eventName, inactive)
 );
 
+let zipFlagArr = [];
+let fileListLen;
+const setFileListLen = (len) => {
+  fileListLen = len;
+};
+
+const generateZippedDownloadLink = () => {
+  const downloadAllLink = document.createElement("button");
+  downloadAllLink.className = "download-all-button";
+  downloadAllLink.textContent = "download all";
+  downloadAllLink.addEventListener("click", zipAndDownload);
+  document.querySelector(".results").appendChild(downloadAllLink);
+};
+
 const handleDrop = (e) => {
   const dt = e.dataTransfer;
   const files = dt.files;
   const droppedFileList = [...files];
   if (droppedFileList.length > 20) return alert("too many files bruv");
   handleFiles(droppedFileList);
+  setFileListLen(droppedFileList.length);
 };
 
 dropzone.addEventListener("drop", handleDrop);
@@ -36,14 +51,6 @@ const handleFiles = (fileArray) => {
     createResult(file, fileId);
     uploadFile(file, fileId);
   });
-
-  if (fileArray.length > 1) {
-    const downloadAllLink = document.createElement("button");
-    downloadAllLink.className = "download-all-button";
-    downloadAllLink.textContent = "download all";
-    downloadAllLink.addEventListener("click", zipAndDownload);
-    document.querySelector(".results").appendChild(downloadAllLink);
-  }
 };
 
 const createResult = (file, fileId) => {
@@ -146,6 +153,12 @@ const updateProgressBar = (file, fileId, imgJson) => {
       clearInterval(addProgress);
       progressBar.classList.add("finished");
       populateDivAfterCompression(file, fileId, imgJson);
+      zipFlagArr.push(true);
+
+      //render zipped download link only after processing all files
+      if (zipFlagArr.length === fileListLen) {
+        generateZippedDownloadLink();
+      }
     }
   }, 50);
 };
