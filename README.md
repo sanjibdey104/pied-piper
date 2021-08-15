@@ -12,12 +12,10 @@
 ### Features:
 - Drag and Drop upto 20 images (max size: 4 MB)
 - Links to download individual compressed files
-- "Download All" link to zip and download multiple files
+- Zip and download multiple files
 
-### ToDos:
-- Filter out errored out files while downloading zipped
-- IN SHORT --> "Better error handling"
-
+### ToDo:
+- Refactor error handling and code in general
 
 ### Attributions:
 - Inspired by [Tiny JPG](https://tinyjpg.com/)
