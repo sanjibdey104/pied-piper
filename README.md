@@ -1,6 +1,9 @@
 # Pied Piper
 ### Minimal Image Compressor - compress images better than or at par with tinyjpg
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4f1254df-9ef0-4358-bd2d-3f2314bb02ed/deploy-status)](https://app.netlify.com/sites/piedpiperhub/deploys)
+### live @ https://piedpiperhub.netlify.app/
+
 ### Built with: 
 - Vanilla JS
 - [imagemin](https://www.npmjs.com/package/imagemin)
