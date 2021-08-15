@@ -192,7 +192,7 @@ a:hover i {
 .result-list div {
   width: 33%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .file_name {
@@ -218,7 +218,7 @@ a:hover i {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  color: tomato;
+  color: #c4550f;
 }
 
 .download_link_wrapper a:hover,
@@ -237,6 +237,9 @@ a:hover i {
   max-width: 15rem;
   height: 30px;
   position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 ::-moz-progress-bar {
@@ -272,7 +275,7 @@ a:hover i {
 }
 
 .error::before {
-  content: "finished";
+  content: "error";
   position: absolute;
   inset: 0;
   color: #000;
@@ -282,7 +285,21 @@ a:hover i {
 }
 
 .error::-webkit-progress-value {
-  background: linear-gradient(to right, #e85d04, hsl(12, 89%, 58%));
+  background: linear-gradient(to right, #e67935, #c4550f);
+}
+
+.extension_error::before {
+  content: "unsupported file type";
+  position: absolute;
+  inset: 0;
+  color: #000;
+
+  display: grid;
+  place-content: center;
+}
+
+.extension_error::-webkit-progress-value {
+  background: linear-gradient(to right, #e67935, #c4550f);
 }
 
 @media only screen and (min-width: 480px) {

@@ -37,9 +37,15 @@ const handleDrop = (e) => {
   const dt = e.dataTransfer;
   const files = dt.files;
   const droppedFileList = [...files];
+
+  const filteredFileList = droppedFileList.filter((file) =>
+    file.type.includes("image")
+  );
+  console.log(filteredFileList);
+
   if (droppedFileList.length > 20) return alert("too many files bruv");
   handleFiles(droppedFileList);
-  setFileListLen(droppedFileList.length);
+  setFileListLen(filteredFileList.length);
 };
 
 dropzone.addEventListener("drop", handleDrop);
@@ -48,6 +54,9 @@ const handleFiles = (fileArray) => {
   fileArray.forEach((file) => {
     const fileId = Math.round(Math.random() * 10000);
     if (file.size > 4 * 1024 * 1024) return alert("file size exceeded");
+    file.type.includes("image")
+      ? (file.extensionFlag = true)
+      : (file.extensionFlag = false);
     createResult(file, fileId);
     uploadFile(file, fileId);
   });
@@ -94,7 +103,9 @@ const createResult = (file, fileId) => {
   const listItem = document.createElement("li");
   listItem.appendChild(divBeforeCompression);
   listItem.appendChild(progressBar);
-  listItem.appendChild(divAfterCompression);
+  if (file.extensionFlag) {
+    listItem.appendChild(divAfterCompression);
+  }
 
   const resultListItem = document.querySelector(".result-list");
   resultListItem.appendChild(listItem);
@@ -126,6 +137,7 @@ const uploadFile = (file, fileId) => {
 
       const imgJson = await fileStream.json();
       if (imgJson.error) return handleFileError(fileName, fileId);
+      if (!file.extensionFlag) return handleExtensionError(fileName, fileId);
       updateProgressBar(file, fileId, imgJson);
     } catch (err) {
       console.log(err);
@@ -137,10 +149,18 @@ const uploadFile = (file, fileId) => {
 
 const handleFileError = (fileName, fileId) => {
   const progressBar = document.getElementById(
-    `progress_bar_${fileName}_${fileId}`
+    `progress-bar_${fileName}_${fileId}`
   );
   progressBar.value = 10;
   progressBar.classList.add("error");
+};
+
+const handleExtensionError = (fileName, fileId) => {
+  const progressBar = document.getElementById(
+    `progress-bar_${fileName}_${fileId}`
+  );
+  progressBar.value = 10;
+  progressBar.classList.add("extension_error");
 };
 
 const updateProgressBar = (file, fileId, imgJson) => {
@@ -152,9 +172,10 @@ const updateProgressBar = (file, fileId, imgJson) => {
     if (progressBar.value === 10) {
       clearInterval(addProgress);
       progressBar.classList.add("finished");
-      populateDivAfterCompression(file, fileId, imgJson);
-      zipFlagArr.push(true);
-
+      if (file.extensionFlag) {
+        populateDivAfterCompression(file, fileId, imgJson);
+        zipFlagArr.push(true);
+      }
       //render zipped download link only after processing all files
       if (zipFlagArr.length === fileListLen) {
         generateZippedDownloadLink();
