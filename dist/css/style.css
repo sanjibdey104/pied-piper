@@ -266,11 +266,11 @@ a:hover i {
 }
 
 .uploading::-webkit-progress-value {
-  background: linear-gradient(to right, #ade8f4, #90e0ef);
+  background: linear-gradient(to right, #c1d3fe, #abc4ff);
 }
 
 .uploading::before {
-  content: "uploading";
+  content: "uploading...";
   position: absolute;
   inset: 0;
   color: #000;

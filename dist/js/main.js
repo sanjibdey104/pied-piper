@@ -60,7 +60,7 @@ const handleFiles = (fileArray) => {
     const progressBar = document.getElementById(
       `progress-bar_${file.name}_${fileId}`
     );
-    progressBar.classList.add("uploading...");
+    progressBar.classList.add("uploading");
     uploadFile(file, fileId);
   });
 };
