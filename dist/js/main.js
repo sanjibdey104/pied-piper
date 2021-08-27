@@ -180,6 +180,8 @@ const updateProgressBar = (file, fileId, imgJson) => {
       if (zipFlagArr.length === fileListLen) {
         generateZippedDownloadLink();
       }
+    } else {
+      progressBar.classList.add("uploading");
     }
   }, 50);
 };
