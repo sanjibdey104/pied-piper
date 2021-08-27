@@ -59,7 +59,7 @@ const handleFiles = (fileArray) => {
       : (file.extensionFlag = false);
     createResult(file, fileId);
     const progressBar = document.getElementById(
-      `progress-bar_${fileName}_${fileId}`
+      `progress-bar_${file.filename}_${fileId}`
     );
     progressBar.classList.add("uploading");
     uploadFile(file, fileId);
