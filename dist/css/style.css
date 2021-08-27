@@ -219,13 +219,13 @@ a:hover i {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  color: #c4550f;
+  color: var(--accent-color);
 }
 
 .download_link_wrapper a:hover,
 .download_link_wrapper a:active,
 .download_link_wrapper a:visited {
-  color: var(--accent-color);
+  color: var(--text-dark);
 }
 
 .compressed_percentage {
@@ -343,10 +343,9 @@ a:hover i {
   font-weight: 500;
   color: var(--text-light);
   background-color: var(--accent-color);
-  border: 1px solid var(--accent-color);
   transition: all 200ms ease-in-out;
 }
 
 .download-all-button:hover {
-  background-color: var(--bg-dark);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
