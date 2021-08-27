@@ -279,6 +279,10 @@ a:hover i {
   place-content: center;
 }
 
+.finished::-webkit-progress-value {
+  background: linear-gradient(to right, #7fc271, #52b69a, var(--accent-color));
+}
+
 .finished::before {
   content: "finished";
   position: absolute;
@@ -300,7 +304,7 @@ a:hover i {
 }
 
 .error::-webkit-progress-value {
-  background: linear-gradient(to right, #e67935, #c4550f);
+  background: linear-gradient(to right, #fbb1bd, #ff99ac);
 }
 
 .extension_error::before {
