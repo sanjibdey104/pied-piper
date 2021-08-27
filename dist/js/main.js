@@ -167,6 +167,7 @@ const updateProgressBar = (file, fileId, imgJson) => {
   const progressBar = document.getElementById(
     `progress-bar_${file.name}_${fileId}`
   );
+  progressBar.classList.add("uploading");
   const addProgress = setInterval(() => {
     progressBar.value += 1;
     if (progressBar.value === 10) {
@@ -180,8 +181,6 @@ const updateProgressBar = (file, fileId, imgJson) => {
       if (zipFlagArr.length === fileListLen) {
         generateZippedDownloadLink();
       }
-    } else {
-      progressBar.classList.add("uploading");
     }
   }, 50);
 };
