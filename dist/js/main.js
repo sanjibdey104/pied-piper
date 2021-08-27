@@ -41,7 +41,6 @@ const handleDrop = (e) => {
   const filteredFileList = droppedFileList.filter((file) =>
     file.type.includes("image")
   );
-  console.log(filteredFileList);
 
   if (droppedFileList.length > 20) return alert("too many files bruv");
   handleFiles(droppedFileList);
@@ -59,7 +58,7 @@ const handleFiles = (fileArray) => {
       : (file.extensionFlag = false);
     createResult(file, fileId);
     const progressBar = document.getElementById(
-      `progress-bar_${file.filename}_${fileId}`
+      `progress-bar_${file.name}_${fileId}`
     );
     progressBar.classList.add("uploading");
     uploadFile(file, fileId);
