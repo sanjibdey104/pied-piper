@@ -318,7 +318,7 @@ a:hover i {
 }
 
 .extension_error::-webkit-progress-value {
-  background: linear-gradient(to right, #e67935, #c4550f);
+  background: linear-gradient(to right, #fbb1bd, #ff99ac);
 }
 
 @media only screen and (min-width: 480px) {
