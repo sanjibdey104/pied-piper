@@ -58,6 +58,10 @@ const handleFiles = (fileArray) => {
       ? (file.extensionFlag = true)
       : (file.extensionFlag = false);
     createResult(file, fileId);
+    const progressBar = document.getElementById(
+      `progress-bar_${fileName}_${fileId}`
+    );
+    progressBar.classList.add("uploading");
     uploadFile(file, fileId);
   });
 };
@@ -128,11 +132,6 @@ const uploadFile = (file, fileId) => {
     const name = fileName.slice(0, fileName.length - (extension.length + 1));
     const body = { base64String, name, extension };
     const url = "./.netlify/functions/compress_files";
-
-    const progressBar = document.getElementById(
-      `progress-bar_${fileName}_${fileId}`
-    );
-    progressBar.classList.add("processing");
 
     try {
       const fileStream = await fetch(url, {
