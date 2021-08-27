@@ -265,6 +265,10 @@ a:hover i {
   border-radius: 15px;
 }
 
+.uploading::-webkit-progress-value {
+  background: linear-gradient(to right, #ade8f4, #90e0ef);
+}
+
 .uploading::before {
   content: "uploading";
   position: absolute;

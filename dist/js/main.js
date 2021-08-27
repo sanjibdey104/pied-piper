@@ -60,7 +60,7 @@ const handleFiles = (fileArray) => {
     const progressBar = document.getElementById(
       `progress-bar_${file.name}_${fileId}`
     );
-    progressBar.classList.add("uploading");
+    progressBar.classList.add("uploading...");
     uploadFile(file, fileId);
   });
 };
@@ -170,7 +170,6 @@ const updateProgressBar = (file, fileId, imgJson) => {
   const progressBar = document.getElementById(
     `progress-bar_${file.name}_${fileId}`
   );
-  progressBar.classList.add("uploading");
   const addProgress = setInterval(() => {
     progressBar.value += 1;
     if (progressBar.value === 10) {
